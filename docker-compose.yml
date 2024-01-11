@@ -14,6 +14,10 @@ services:
       - .:/myapp
       - bundle:/usr/local/bundle
       - node_modules:/myapp/node_modules
+    environment:
+      - SENDER_ADDRESS=$SENDER_ADDRESS
+      - LAUNCHY_DRY_RUN=true
+      - BROWSER=/dev/null
     ports:
       - "3000:3000"
     depends_on:
