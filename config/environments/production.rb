@@ -77,7 +77,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  # config.action_mailer.default_url_options = { host: 'https://Herokuのアプリ名.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://fierce-fortress-34228-b79ac0a28552.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default charset: 'utf-8'
