@@ -1,3 +1,4 @@
-div.container
-  h1 Hello
-  p Find me in app/views/pages/index.html.slim
+div.container.mt-2
+  - if user_signed_in?
+    p= current_user.user_name
+    button.btn.btn-primary(type="submit") ツイートする

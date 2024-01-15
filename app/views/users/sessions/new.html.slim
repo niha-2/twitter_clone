@@ -1,6 +1,6 @@
-div.container
+div.container.mt-3
   h2 Log in
-  = form_with(url: user_session_path, local: true, html: {class: 'form-signup' } ) do |f|
+  = form_with(model: @user, url: users_sign_in_path, local: true, html: {class: 'form-signup' } ) do |f|
     .field
       = f.label :email, class: 'form-label'
       br/

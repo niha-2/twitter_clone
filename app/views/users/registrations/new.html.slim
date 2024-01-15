@@ -1,4 +1,4 @@
-div.container
+div.container.mt-3
   h2 Sign up
   = form_with(model: @user, url: users_sign_up_path, html: {class: 'form-signup' } ) do |f|
     = render "users/shared/error_messages", resource: @user
