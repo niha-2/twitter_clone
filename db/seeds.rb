@@ -10,7 +10,7 @@
 # user
 
 user1 = User.new(
-  email: 'example1@gmail.com',
+  email: 'gen.5polym.hn@gmail.com',
   user_name: 'example1',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
@@ -27,7 +27,7 @@ user1.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden
 user1.save!
 
 user2 = User.new(
-  email: 'example2@gmail.com',
+  email: 'gen.2polym.hn@gmail.com',
   user_name: 'example2',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
@@ -44,7 +44,7 @@ user2.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako
 user2.save!
 
 user3 = User.new(
-  email: 'example3@gmail.com',
+  email: 'gen.3polym.hn@gmail.com',
   user_name: 'example3',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
@@ -61,7 +61,7 @@ user3.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako
 user3.save!
 
 user4 = User.new(
-  email: 'example4@gmail.com',
+  email: 'gen.4polym.hn@gmail.com',
   user_name: 'example4',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
