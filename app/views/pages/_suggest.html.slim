@@ -1,18 +1,4 @@
-      div.row
-        div.col-1
-          p = image_tag 'profile.svg', alt: 'profile'
-        div.col-11
-          = form_with(url: '', model: @tweet, data: { turbo: false }, locale: true) do |f|
-            .field
-             = f.text_area :tweet, class: 'form-control bg-dark', style: 'border: none'
-            .d-flex.justify-content-between
-              .field
-                = f.label :image
-                  = image_tag 'image.svg', alt: 'image'
-                  = f.file_field :image, style: 'display: none'
-              .actions
-                = f.submit 'ツイートする', class: 'btn btn-primary btn-sm'
-      div.row
-        = render 'pages/tweet'
-      div.row
-        = render 'pages/tweet'
+= render 'tweet_form'
+div.row
+  - @tweets.each do |tweet|
+    = render partial: 'pages/tweet', locals: {tweet: tweet, user: @users.find { |user| tweet.id == user.id }}

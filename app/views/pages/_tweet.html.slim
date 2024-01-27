@@ -1,26 +1,26 @@
 div.container-fluid.border.border-secondary
   div.row
     div.col-1
-      p = image_tag 'profile.svg', alt: 'profile'
+      p = image_tag user.images[0], alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
     div.col-11
       div.row
-        p UserName @userNickName
+        p== user.name + ' @' + user.user_name
       div.row
-        p tweet内容ああああああああああああああああ222222
+        == tweet.tweet
       div.row
         div.d-flex.justify-content-between
           div
-            = image_tag 'image.svg', alt: 'image', class: 'me-2'
+            = image_tag 'reply.svg', alt: 'reply', class: 'me-2'
             = p 11
           div
-            = image_tag 'image.svg', alt: 'image', class: 'me-2'
+            = image_tag 'retweet.svg', alt: 'retweet', class: 'me-2'
             = p 11
           div
-            = image_tag 'image.svg', alt: 'image', class: 'me-2'
+            = image_tag 'like.svg', alt: 'like', class: 'me-2'
             = p 11
           div
-            = image_tag 'image.svg', alt: 'image', class: 'me-2'
+            = image_tag 'report.svg', alt: 'report', class: 'me-2'
             = p 11
           div
-            = image_tag 'image.svg', alt: 'image'
+            = image_tag 'share.svg', alt: 'share'
           div

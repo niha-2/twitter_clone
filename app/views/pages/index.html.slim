@@ -1,69 +1,66 @@
-div.container-fluid.mt-2
-  - if user_signed_in?
-    p= current_user.user_name
-    button.btn.btn-primary(type="submit") ツイートする
-div.container-fluid.text-white
-  div.row
-    div.col-4.border.border-secondary
-      div.row
-        div.d-flex
-          div.me-3.fs-3
-            i.bi.bi-twitter
-      div.row
-        div.d-flex.align-items-stretch
-          div.me-3.fs-3
-            = image_tag 'home.svg', alt: 'home'
+- if user_signed_in?
+  div.container-fluid.text-white
+    div.row
+      div.col-4.border.border-secondary
+        div.row
+          div.d-flex
+            div.me-3.fs-3
+              i.bi.bi-twitter
+        div.row
+          div.d-flex.align-items-stretch
+            div.me-3.fs-3
+              = image_tag 'home.svg', alt: 'home'
+            div
+              = link_to 'ホーム', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex.align-items-center
+            div.me-3.fs-3
+              = image_tag 'search.svg', alt: 'search'
+            div
+              = link_to '話題を検索', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex
+            div.me-3.fs-3
+              = image_tag 'notice.svg', alt: 'notice'
+            div
+              = link_to '通知', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex
+            div.me-3.fs-3
+              = image_tag 'message.svg', alt: 'message'
+            div
+              = link_to 'メッセージ', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex
+            div.me-3.fs-3
+              = image_tag 'bookmark.svg', alt: 'bookmark'
+            div
+              = link_to 'ブックマーク', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex
+            div.me-3.fs-3
+              = image_tag 'profile.svg', alt: 'profile'
+            div
+              = link_to 'プロフィール', "", class: 'fs-4 text-decoration-none link-light'
+        div.row
+          div.d-flex
+            div.me-3.fs-5
+              = image_tag 'more.svg', alt: 'more'
+            div
+              = link_to 'もっと見る', "", class: 'fs-4 text-decoration-none link-light'
+      div.col-8.border.border-secondary
+        div.row
           div
-            = link_to 'ホーム', "", class: 'fs-4 text-decoration-none link-light'
-      div.row
-        div.d-flex.align-items-center
-          div.me-3.fs-3
-            = image_tag 'search.svg', alt: 'search'
-          div
-            p.fs-4 話題を検索
-      div.row
-        div.d-flex
-          div.me-3.fs-3
-            = image_tag 'notice.svg', alt: 'notice'
-          div
-            p.fs-4 通知
-      div.row
-        div.d-flex
-          div.me-3.fs-3
-            = image_tag 'message.svg', alt: 'message'
-          div
-            p.fs-4 メッセージ
-      div.row
-        div.d-flex
-          div.me-3.fs-3
-            = image_tag 'bookmark.svg', alt: 'bookmark'
-          div
-            p.fs-4 ブックマーク
-      div.row
-        div.d-flex
-          div.me-3.fs-3
-            = image_tag 'profile.svg', alt: 'profile'
-          div
-            p.fs-4 プロフィール
-      div.row
-        div.d-flex
-          div.me-3.fs-5
-            = image_tag 'more.svg', alt: 'more'
-          div
-            p.fs-4 もっと見る
-    div.col-8.border.border-secondary
-      div.row
-        div
-          h3 ホーム
-      div.row
-        div.tabs
-          ul.nav.nav-tabs
-            li.nav-item
-              a.nav-link.active aria-current="page" href="#section1" data-bs-toggle="tab" おすすめ
-            li.nav-item
-              a.nav-link href="#section2" data-bs-toggle="tab" フォロー
-          div.tab-content
-            #section1.tab-pane.fade.show.active
-              = render 'pages/suggest'
-            #section2.tab-pane.fade
-              = render 'pages/follow'
+            h3 ホーム
+        div.row
+          div.tabs
+            ul.nav.nav-underline.nav-fill
+              li.nav-item
+                a.nav-link.active.text-white aria-current="page" href="#section1" data-bs-toggle="tab" おすすめ
+              li.nav-item
+                a.nav-link.text-white href="#section2" data-bs-toggle="tab" フォロー
+            div.tab-content
+              #section1.tab-pane.fade.show.active
+                = render 'pages/suggest'
+              #section2.tab-pane.fade
+                == render 'pages/follow'
