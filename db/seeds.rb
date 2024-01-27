@@ -60,6 +60,23 @@ user3.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: '
 user3.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
 user3.save!
 
+user4 = User.new(
+  email: 'example4@gmail.com',
+  user_name: 'example4',
+  phone_number: '00000000000',
+  date_of_birth: Time.zone.today,
+  name: 'みくり',
+  self_introduction: 'ミックスジュースが好きです',
+  place: '神奈川県',
+  website: 'https://example3.com',
+  password: '444444',
+  uid: '444444444'
+)
+
+user4.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
+user4.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
+user4.save!
+
 # tweet
 tweet1 = Tweet.new(
   user_id: 1,
@@ -80,7 +97,7 @@ tweet3 = Tweet.new(
 tweet3.save!
 
 tweet4 = Tweet.new(
-  user_id: 3,
+  user_id: 4,
   tweet: 'だんご～～～～～。'
 )
 tweet4.save!

@@ -1,4 +1,4 @@
 = render 'tweet_form'
 div.row
   - @tweets.each do |tweet|
-    = render partial: 'pages/tweet', locals: {tweet: tweet, user: @users.find { |user| tweet.id == user.id }}
+    = render partial: 'pages/tweet', locals: {tweet: tweet, user: @users.find { |user| tweet.user_id == user.id }}
