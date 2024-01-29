@@ -1,10 +1,10 @@
 div.container-fluid.border.border-secondary
   div.row
     div.col-1
-      p = image_tag user.images[0], alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      p = image_tag tweet.user.images[0], alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
     div.col-11
       div.row
-        p== user.name + ' @' + user.user_name
+        p== tweet.user.name + ' @' + tweet.user.user_name
       div.row
         == tweet.tweet
       div.row

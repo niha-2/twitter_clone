@@ -1,53 +1,7 @@
 - if user_signed_in?
   div.container-fluid.text-white
     div.row
-      div.col-4.border.border-secondary
-        div.row
-          div.d-flex
-            div.me-3.fs-3
-              i.bi.bi-twitter
-        div.row
-          div.d-flex.align-items-stretch
-            div.me-3.fs-3
-              = image_tag 'home.svg', alt: 'home'
-            div
-              = link_to 'ホーム', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex.align-items-center
-            div.me-3.fs-3
-              = image_tag 'search.svg', alt: 'search'
-            div
-              = link_to '話題を検索', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex
-            div.me-3.fs-3
-              = image_tag 'notice.svg', alt: 'notice'
-            div
-              = link_to '通知', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex
-            div.me-3.fs-3
-              = image_tag 'message.svg', alt: 'message'
-            div
-              = link_to 'メッセージ', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex
-            div.me-3.fs-3
-              = image_tag 'bookmark.svg', alt: 'bookmark'
-            div
-              = link_to 'ブックマーク', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex
-            div.me-3.fs-3
-              = image_tag 'profile.svg', alt: 'profile'
-            div
-              = link_to 'プロフィール', "", class: 'fs-4 text-decoration-none link-light'
-        div.row
-          div.d-flex
-            div.me-3.fs-5
-              = image_tag 'more.svg', alt: 'more'
-            div
-              = link_to 'もっと見る', "", class: 'fs-4 text-decoration-none link-light'
+      = render 'side_bar'
       div.col-8.border.border-secondary
         div.row
           div
