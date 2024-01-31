@@ -12,18 +12,18 @@ div
   div.row
     div.d-flex.justify-content-start
       div
-        = image_tag 'profile/place', alt: 'place', class: 'me-2'
+        = image_tag 'profile/place.svg', alt: 'place', class: 'me-2'
         span.text-white-50.me-2= current_user.user_profile.place
       div
-        = image_tag 'profile/link', alt: 'link', class: 'me-2'
+        = image_tag 'profile/link.svg', alt: 'link', class: 'me-2'
         span.text-white-50.me-2
           = link_to current_user.user_profile.website, current_user.user_profile.website, class: 'text-decoration-none'
       div
-        = image_tag 'profile/birthday', alt: 'birthday', class: 'me-2'
+        = image_tag 'profile/birthday.svg', alt: 'birthday', class: 'me-2'
         span.text-white-50= '誕生日 ' + current_user.user_jp_date_of_birth
   div.row
     div
-      = image_tag 'profile/since', alt: 'place', class: 'me-2'
+      = image_tag 'profile/since.svg', alt: 'place', class: 'me-2'
       span.text-white-50.me-2= current_user.user_create_at_month + 'からtwitterを利用しています'
   div.row
     div(style='height: 5px;')
