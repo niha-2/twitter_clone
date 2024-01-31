@@ -9,74 +9,90 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # user
-
 user1 = User.new(
   email: 'gen.5polym.hn@gmail.com',
   user_name: 'example1',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
-  name: '田中',
-  self_introduction: '初めまして',
-  place: '東京都',
-  website: 'https://example1.com',
   password: '111111',
   uid: '111111111'
 )
 
-user1.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
-user1.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
 user1.save!
+
+user_profile1 = UserProfile.new(
+  user_id: 1,
+  name: '田中',
+  self_introduction: '初めまして',
+  place: '東京都',
+  website: 'https://example1.com'
+)
+user_profile1.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile1.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
+user_profile1.save!
 
 user2 = User.new(
   email: 'gen.2polym.hn@gmail.com',
   user_name: 'example2',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
-  name: 'よしー',
-  self_introduction: 'twice沼',
-  place: '岐阜県',
-  website: 'https://example2.com',
   password: '222222',
   uid: '222222222'
 )
-
-user2.images.attach(io: File.open('app/assets/images/kishi.JPG'), filename: 'kishi.JPG')
-user2.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
 user2.save!
+
+user_profile2 = UserProfile.new(
+  user_id: 2,
+  name: 'よしー',
+  self_introduction: 'twice沼',
+  place: '岐阜県',
+  website: 'https://example2.com'
+)
+user_profile2.images.attach(io: File.open('app/assets/images/kishi.JPG'), filename: 'kishi.JPG')
+user_profile2.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile2.save!
 
 user3 = User.new(
   email: 'gen.3polym.hn@gmail.com',
   user_name: 'example3',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
-  name: 'みくり',
-  self_introduction: 'ミックスジュースが好きです',
-  place: '神奈川県',
-  website: 'https://example3.com',
   password: '333333',
   uid: '333333333'
 )
-
-user3.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
-user3.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
 user3.save!
+
+user_profile3 = UserProfile.new(
+  user_id: 3,
+  name: 'みくり',
+  self_introduction: 'ミックスジュースが好きです',
+  place: '神奈川県',
+  website: 'https://example3.com'
+)
+user_profile3.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
+user_profile3.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile3.save!
 
 user4 = User.new(
   email: 'gen.4polym.hn@gmail.com',
   user_name: 'example4',
   phone_number: '00000000000',
   date_of_birth: Time.zone.today,
-  name: 'みくり',
-  self_introduction: 'ミックスジュースが好きです',
-  place: '神奈川県',
-  website: 'https://example3.com',
   password: '444444',
   uid: '444444444'
 )
-
-user4.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
-user4.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
 user4.save!
+
+user_profile4 = UserProfile.new(
+  user_id: 4,
+  name: 'まよねーず',
+  self_introduction: 'だんご3兄弟',
+  place: '福岡県',
+  website: 'https://example4.com'
+)
+user_profile4.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
+user_profile4.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
+user_profile4.save!
 
 # tweet
 tweet1 = Tweet.new(
@@ -121,3 +137,85 @@ follow2 = Follow.new(
   followed_id: 2
 )
 follow2.save!
+
+# like
+for num in 1..3 do
+  like = Like.new(
+    user_id: num,
+    tweet_id: num+1
+  )
+  like.save!
+end
+
+like4 = Like.new(
+  user_id: 4,
+  tweet_id: 1
+)
+like4.save!
+
+for num in 2..4 do
+  like = Like.new(
+    user_id: num,
+    tweet_id: 2
+  )
+  like.save!
+end
+
+# retweet
+for num in 1..3 do
+  retweet = Retweet.new(
+    user_id: num,
+    tweet_id: num+1
+  )
+  retweet.save!
+end
+
+retweet4 = Retweet.new(
+  user_id: 4,
+  tweet_id: 1
+)
+retweet4.save!
+
+for num in 1..3 do
+  retweet = Retweet.new(
+    user_id: num,
+    tweet_id: 1
+  )
+  retweet.save!
+end
+
+# comment
+comment1 = Comment.new(
+  user_id: 1,
+  tweet_id: 2,
+  comment: 'アオハライド良すぎる!!'
+)
+comment1.save!
+
+comment2 = Comment.new(
+  user_id: 2,
+  tweet_id: 3,
+  comment: '大阪'
+)
+comment2.save!
+
+comment3 = Comment.new(
+  user_id: 3,
+  tweet_id: 4,
+  comment: '？！・・・・・・・・・・'
+)
+comment3.save!
+
+comment4 = Comment.new(
+  user_id: 4,
+  tweet_id: 1,
+  comment: '飲み行こう^^'
+)
+comment4.save!
+
+comment5 = Comment.new(
+  user_id: 2,
+  tweet_id: 1,
+  comment: '俺も!！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
+)
+comment5.save!

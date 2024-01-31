@@ -1,0 +1,19 @@
+div.tabs
+  ul.nav.nav-underline.nav-fill
+    li.nav-item
+      a.nav-link.active.text-white aria-current="page" href="#section1" data-bs-toggle="tab" ツイート
+    li.nav-item
+      a.nav-link.text-white href="#section2" data-bs-toggle="tab" いいね
+    li.nav-item
+      a.nav-link.text-white href="#section3" data-bs-toggle="tab" リツイート
+    li.nav-item
+      a.nav-link.text-white href="#section4" data-bs-toggle="tab" コメント
+  div.tab-content
+    #section1.tab-pane.fade.show.active
+      = render 'user_profiles/tweets', tweets: @current_user_tweets
+    #section2.tab-pane.fade
+      = render 'user_profiles/tweets', tweets: @current_user_like_tweets
+    #section3.tab-pane.fade.show
+      = render 'user_profiles/tweets', tweets: @current_user_retweet_tweets
+    #section4.tab-pane.fade
+      = render 'user_profiles/tweets', tweets: @current_user_comment_tweets

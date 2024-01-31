@@ -38,7 +38,7 @@ div.col-4.border.border-secondary
       div.me-3.fs-3
         = image_tag 'profile.svg', alt: 'profile'
       div
-        = link_to 'プロフィール', "", class: 'fs-4 text-decoration-none link-light'
+        = link_to 'プロフィール', user_profile_path(current_user.user_profile), class: 'fs-4 text-decoration-none link-light'
   div.row
     div.d-flex
       div.me-3.fs-5
