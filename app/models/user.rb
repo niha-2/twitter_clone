@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
 
-
   has_many :active_follow, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy, inverse_of: :follower
   has_many :passive_follow, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy, inverse_of: :followed
   has_many :tweets, dependent: :destroy
@@ -49,5 +48,4 @@ class User < ApplicationRecord
   def user_create_at_month
     created_at.strftime('%Y年%m月')
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateRetweets < ActiveRecord::Migration[7.0]
   def change
     create_table :retweets do |t|
@@ -7,6 +9,6 @@ class CreateRetweets < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :retweets, [:user_id, :tweet_id], unique: true
+    add_index :retweets, %i[user_id tweet_id], unique: true
   end
 end

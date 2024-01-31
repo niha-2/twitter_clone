@@ -139,10 +139,10 @@ follow2 = Follow.new(
 follow2.save!
 
 # like
-for num in 1..3 do
+(1..3).each do |num|
   like = Like.new(
     user_id: num,
-    tweet_id: num+1
+    tweet_id: num + 1
   )
   like.save!
 end
@@ -153,7 +153,7 @@ like4 = Like.new(
 )
 like4.save!
 
-for num in 2..4 do
+(2..4).each do |num|
   like = Like.new(
     user_id: num,
     tweet_id: 2
@@ -162,10 +162,10 @@ for num in 2..4 do
 end
 
 # retweet
-for num in 1..3 do
+(1..3).each do |num|
   retweet = Retweet.new(
     user_id: num,
-    tweet_id: num+1
+    tweet_id: num + 1
   )
   retweet.save!
 end
@@ -176,7 +176,7 @@ retweet4 = Retweet.new(
 )
 retweet4.save!
 
-for num in 1..3 do
+(1..3).each do |num|
   retweet = Retweet.new(
     user_id: num,
     tweet_id: 1

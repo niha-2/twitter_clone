@@ -1,5 +1,6 @@
-class UserProfilesController < ApplicationController
+# frozen_string_literal: true
 
+class UserProfilesController < ApplicationController
   def show
     return unless user_signed_in?
 
