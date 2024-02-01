@@ -1,4 +1,20 @@
-div.container.mt-2
-  - if user_signed_in?
-    p= current_user.user_name
-    button.btn.btn-primary(type="submit") ツイートする
+- if user_signed_in?
+  div.container-fluid.text-white
+    div.row
+      = render 'side_bar'
+      div.col-8.border.border-secondary
+        div.row
+          div
+            h3 ホーム
+        div.row
+          div.tabs
+            ul.nav.nav-underline.nav-fill
+              li.nav-item
+                a.nav-link.active.text-white aria-current="page" href="#section1" data-bs-toggle="tab" おすすめ
+              li.nav-item
+                a.nav-link.text-white href="#section2" data-bs-toggle="tab" フォロー
+            div.tab-content
+              #section1.tab-pane.fade.show.active
+                = render 'pages/suggest'
+              #section2.tab-pane.fade
+                == render 'pages/follow'

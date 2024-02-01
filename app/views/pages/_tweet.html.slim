@@ -1,0 +1,26 @@
+div.container-fluid.border.border-secondary
+  div.row
+    div.col-1
+      p = image_tag tweet.user.images[0], alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+    div.col-11
+      div.row
+        p== tweet.user.name + ' @' + tweet.user.user_name
+      div.row
+        == tweet.tweet
+      div.row
+        div.d-flex.justify-content-between
+          div
+            = image_tag 'reply.svg', alt: 'reply', class: 'me-2'
+            = p 11
+          div
+            = image_tag 'retweet.svg', alt: 'retweet', class: 'me-2'
+            = p 11
+          div
+            = image_tag 'like.svg', alt: 'like', class: 'me-2'
+            = p 11
+          div
+            = image_tag 'report.svg', alt: 'report', class: 'me-2'
+            = p 11
+          div
+            = image_tag 'share.svg', alt: 'share'
+          div

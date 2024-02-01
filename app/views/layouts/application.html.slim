@@ -8,12 +8,21 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track" => "reload"
     = javascript_include_tag "application", "data-turbo-track" => "reload", defer: true
-  body
+  body.bg-dark(style='height: 100%;')
     = render 'users/shared/flash_message'
-    div.container.mt-2
-      nav
-        - if user_signed_in?
-          = link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary'
-        - elsif controller_name != 'registrations' && action_name != 'new'
-          = link_to "Sign up", new_user_registration_path, class: 'btn btn-primary'
-      = yield
+    div.container-fluid.mt-2
+      nav.navbar.navbar-expand-lg
+        div.container-fluid
+          ul.navbar-nav.container-fluid.justify-content-end
+            - if user_signed_in?
+              li.nav-item
+                div
+                  = link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary nav-link me-2 bg-light'
+            - elsif controller_name != 'registrations' && action_name != 'new'
+              li.nav-item
+                div
+                  = link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary nav-link me-2 bg-light'
+              li.nav-item
+                div
+                  = link_to "新規登録", new_user_registration_path, class: 'btn btn-primary nav-link text-light'
+    = yield

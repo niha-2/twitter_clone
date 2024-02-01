@@ -6,6 +6,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
 
+  has_many_attached :images
+  has_many :tweets, dependent: :destroy
+  has_many :active_follow, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy, inverse_of: :follower
+  has_many :passive_follow, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy, inverse_of: :followed
+  has_many :follower, through: :passive_follow, source: :follower
+  has_many :followings, through: :active_follow, source: :followed
+
   validates :user_name, presence: true
   validates :phone_number, presence: true
   validates :date_of_birth, presence: true

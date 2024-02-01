@@ -1,0 +1,4 @@
+= render 'tweet_form'
+div.row
+  - @followings_tweets.each do |tweet|
+    = render partial: 'pages/tweet', locals: {tweet: tweet}
