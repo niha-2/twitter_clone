@@ -1,0 +1,39 @@
+div
+  div.row
+    h4= current_user.user_profile.name
+    div.row
+      p.small.text-white-50 @#{current_user.user_name}
+  div.row
+    div.col-6
+      div
+        = current_user.user_profile.self_introduction
+  div.row
+    div(style='height: 5px;')
+  div.row
+    div.d-flex.justify-content-start
+      div
+        = image_tag 'profile/place.svg', alt: 'place', class: 'me-2'
+        span.text-white-50.me-2= current_user.user_profile.place
+      div
+        = image_tag 'profile/link.svg', alt: 'link', class: 'me-2'
+        span.text-white-50.me-2
+          = link_to current_user.user_profile.website, current_user.user_profile.website, class: 'text-decoration-none'
+      div
+        = image_tag 'profile/birthday.svg', alt: 'birthday', class: 'me-2'
+        span.text-white-50= '誕生日 ' + current_user.user_jp_date_of_birth
+  div.row
+    div
+      = image_tag 'profile/since.svg', alt: 'place', class: 'me-2'
+      span.text-white-50.me-2= current_user.user_create_at_month + 'からtwitterを利用しています'
+  div.row
+    div(style='height: 5px;')
+  div.row
+    div.d-flex.justify-content-start
+      div
+        span #{current_user.followings.length}
+        span.text-white-50.me-2  フォロー中
+      div
+        span #{current_user.followers.length}
+        span.text-white-50.me-2  フォロワー
+  div.row
+    div(style='height: 30px;')

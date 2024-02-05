@@ -1,0 +1,18 @@
+div.row
+  div.col-1
+    = image_tag 'profile/left_arrow.svg', alt: 'background-image', width: 'max', height: 'max'
+  div.col-11
+    div.row
+      h4= current_user.user_profile.name
+      div.row
+        p.small.text-white-50 #{@current_user_tweets.length}件のツイート
+div.row
+  = image_tag current_user.user_profile.images[1], alt: 'background-image', width: 'max', height: '100px'
+div.row
+  div(style='height: 10px;')
+div.row
+  div.d-flex.justify-content-end
+      = link_to 'プロフィールを編集', "", class: 'text-decoration-none btn btn-outline-light'
+div.row
+  div(style='margin-top: -80px; margin-left: 10px;')
+    p = image_tag current_user.user_profile.images[0], alt: 'profile', width: '120px', height: '120px', style: 'border-radius: 50%;'

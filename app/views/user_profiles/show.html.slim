@@ -1,0 +1,11 @@
+- if user_signed_in?
+  div.container-fluid.text-white
+    div.row
+      = render 'pages/side_bar'
+      div.col-8.border.border-secondary
+        div.row
+          = render 'header'
+        div.row
+          = render 'profile'
+        div
+         = render 'tabs'

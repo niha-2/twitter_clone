@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+class UserProfilesController < ApplicationController
+  def show
+    return unless user_signed_in?
+
+    @current_user_tweets = current_user.tweets.includes(:user).order(created_at: :desc)
+    @current_user_like_tweets = current_user.like_tweets.includes(:user).order(created_at: :desc)
+    @current_user_retweet_tweets = current_user.retweet_tweets.includes(:user).order(created_at: :desc)
+    @current_user_comment_tweets = current_user.comment_tweets.includes(:user).order(created_at: :desc)
+  end
+end
