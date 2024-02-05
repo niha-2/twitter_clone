@@ -1,0 +1,35 @@
+div.container-fluid
+  br/
+  h2 Profile
+  br/
+  = form_with(model: @user_profile, url: user_profile_path(@user_profile)) do |f|
+    = render 'shared/error_messages', resource: @user_profile
+    .field
+      = f.label :name, class: 'form-label'
+      = f.text_field :name, class: 'form-control'
+      br/
+    .field
+      = f.label :self_introduction, class: 'form-label'
+      = f.text_field :self_introduction, class: 'form-control'
+      br/
+    .field
+      = f.label :place, class: 'form-label'
+      = f.text_field :place, class: 'form-control'
+      br/
+    .field
+      = f.label :website, class: 'form-label'
+      = f.text_field :website, class: 'form-control'
+      br/
+    .field
+      = f.label :icon_image, class: 'form-label'
+      div
+        = image_tag @user_profile.icon_image, alt: 'Icon Image', width: 'max', height: '100px' if @user_profile.icon_image.attached?
+      = f.file_field :icon_image, class: 'form-control'
+      br/
+    .field
+      = f.label :header_image, class: 'form-label'
+      div
+        = image_tag @user_profile.header_image, alt: 'Header Image', width: 'max', height: '100px' if @user_profile.header_image.attached?
+      = f.file_field :header_image, class: 'form-control'
+      br/
+    = f.submit "Submit", class: 'btn btn-primary'

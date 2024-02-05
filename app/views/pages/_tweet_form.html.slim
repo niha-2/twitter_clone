@@ -1,7 +1,10 @@
 div.row.border.border-secondary
   div.col-1
     = link_to user_profile_path(current_user.user_profile) do
-      = image_tag current_user.user_profile.images[0], alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      - if current_user.user_profile.icon_image.attached?
+        = image_tag current_user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      - else
+        = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
   div.col-11
     = form_with(url: '', model: @tweet, data: { turbo: false }, locale: true) do |f|
       .field
