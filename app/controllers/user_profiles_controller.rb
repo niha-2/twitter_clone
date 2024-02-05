@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserProfilesController < ApplicationController
-
   before_action :set_user_profile, only: %i[update]
 
   # 編集フォームを表示する
@@ -15,14 +14,12 @@ class UserProfilesController < ApplicationController
   def update
     return unless user_signed_in?
 
+    Rails.logger.debug @user_profile
     if @user_profile.update(user_profile_params)
-      p @user_profile
       redirect_to user_profile_path, notice: 'プロフィールを更新しました'
     else
-      p @user_profile
       render :edit, status: :unprocessable_entity
     end
-
   end
 
   def show
@@ -43,5 +40,4 @@ class UserProfilesController < ApplicationController
   def set_user_profile
     @user_profile = UserProfile.find(params[:id])
   end
-
 end
