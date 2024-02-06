@@ -27,8 +27,8 @@ user_profile1 = UserProfile.new(
   place: '東京都',
   website: 'https://example1.com'
 )
-user_profile1.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
-user_profile1.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
+user_profile1.icon_image.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile1.header_image.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
 user_profile1.save!
 
 user2 = User.new(
@@ -48,8 +48,8 @@ user_profile2 = UserProfile.new(
   place: '岐阜県',
   website: 'https://example2.com'
 )
-user_profile2.images.attach(io: File.open('app/assets/images/kishi.JPG'), filename: 'kishi.JPG')
-user_profile2.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile2.icon_image.attach(io: File.open('app/assets/images/kishi.JPG'), filename: 'kishi.JPG')
+user_profile2.header_image.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
 user_profile2.save!
 
 user3 = User.new(
@@ -69,8 +69,8 @@ user_profile3 = UserProfile.new(
   place: '神奈川県',
   website: 'https://example3.com'
 )
-user_profile3.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
-user_profile3.images.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
+user_profile3.icon_image.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
+user_profile3.header_image.attach(io: File.open('app/assets/images/tako.JPG'), filename: 'tako.JPG')
 user_profile3.save!
 
 user4 = User.new(
@@ -90,8 +90,8 @@ user_profile4 = UserProfile.new(
   place: '福岡県',
   website: 'https://example4.com'
 )
-user_profile4.images.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
-user_profile4.images.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
+user_profile4.icon_image.attach(io: File.open('app/assets/images/oden.JPG'), filename: 'oden.JPG')
+user_profile4.header_image.attach(io: File.open('app/assets/images/hokkaido.JPG'), filename: 'hokkaido.JPG')
 user_profile4.save!
 
 # tweet

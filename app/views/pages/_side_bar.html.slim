@@ -1,4 +1,4 @@
-div.col-4.border.border-secondary
+div
   div.row
     div.d-flex
       div.me-3.fs-3
@@ -8,7 +8,7 @@ div.col-4.border.border-secondary
       div.me-3.fs-3
         = image_tag 'home.svg', alt: 'home'
       div
-        = link_to 'ホーム', "", class: 'fs-4 text-decoration-none link-light'
+        = link_to 'ホーム', pages_path, class: 'fs-4 text-decoration-none link-light'
   div.row
     div.d-flex.align-items-center
       div.me-3.fs-3
