@@ -14,7 +14,6 @@ class UserProfilesController < ApplicationController
   def update
     return unless user_signed_in?
 
-    Rails.logger.debug @user_profile
     if @user_profile.update(user_profile_params)
       redirect_to user_profile_path, notice: 'プロフィールを更新しました'
     else
