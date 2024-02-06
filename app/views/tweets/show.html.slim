@@ -1,0 +1,11 @@
+- if user_signed_in?
+  div.container-fluid.text-white
+    div.row
+      div.col-4.border.border-secondary
+        = render 'pages/side_bar'
+      div.col-8.border.border-secondary
+        div.row
+          = render partial: 'tweet_detail', locals: {tweet: @tweet}
+        div.row
+          - @comments.each do |comment|
+            = render partial: 'comment', locals: {comment: comment}

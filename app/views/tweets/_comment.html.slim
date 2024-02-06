@@ -1,0 +1,20 @@
+div.container-fluid.border.border-secondary
+  div.row
+    div.col-1
+      - if comment.user.user_profile.icon_image.attached?
+        = image_tag comment.user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      - else
+        = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+    div.col-11.card.text-white.bg-dark
+      div.row
+        p
+          | #{comment.user.user_profile.name}
+          span.text-white-50
+            |  @#{comment.user.user_name}・#{comment.comment_created_period_from_now}
+        p.text-white-50
+          | 返信先:
+          span.text-info
+            |  @#{@tweet.user.user_name}
+      div.row
+        = comment.comment
+      br/
