@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create]
+  before_action :authenticate_user!, only: %i[create, show]
 
   def create
     tweet = current_user.tweets.build(tweet_params)
@@ -10,8 +10,6 @@ class TweetsController < ApplicationController
   end
 
   def show
-    return unless user_signed_in?
-
     @tweet = Tweet.find(params[:id])
     @comments = @tweet.comments.includes(:user)
     @comment = Comment.new
