@@ -24,12 +24,10 @@ class Comment < ApplicationRecord
   def comment_created_period_from_now
     if comment_created_minute_from_now < 60
       "#{comment_created_minute_from_now}分前"
-    elsif
-      comment_created_hour_from_now < 24
+    elsif comment_created_hour_from_now < 24
       "#{comment_created_hour_from_now}時間前"
     else
       comment_created_at_date
     end
   end
-
 end

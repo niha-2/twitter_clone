@@ -1,5 +1,6 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
+class CommentsController < ApplicationController
   def create
     return unless user_signed_in?
 
@@ -12,8 +13,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    p params
     params.require(:comment).permit(:comment).merge(tweet_id: params[:tweet_id], user_id: current_user.id)
   end
-
 end

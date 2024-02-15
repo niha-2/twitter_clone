@@ -13,7 +13,6 @@ class Tweet < ApplicationRecord
 
   validates :tweet, presence: true, length: { maximum: 140 }
 
-
   def tweet_created_at_time
     created_at.strftime('%H:%M')
   end
@@ -33,12 +32,10 @@ class Tweet < ApplicationRecord
   def tweet_created_period_from_now
     if tweet_created_minute_from_now < 60
       "#{tweet_created_minute_from_now}分前"
-    elsif
-      tweet_created_hour_from_now < 24
+    elsif tweet_created_hour_from_now < 24
       "#{tweet_created_hour_from_now}時間前"
     else
       tweet_created_at_date
     end
-
   end
 end
