@@ -2,11 +2,10 @@
 
 class TweetsController < ApplicationController
   def create
-    return unless user_signed_in?
+    before_action :authenticate_user!
 
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
-    flash[:alert] = @tweet.errors.full_messages.join(', ') unless @tweet.save
+    tweet = current_user.tweets.build(tweet_params)
+    flash[:alert] = @tweet.errors.full_messages.join(', ') unless tweet.save
     redirect_to root_path
   end
 
