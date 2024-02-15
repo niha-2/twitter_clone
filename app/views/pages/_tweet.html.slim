@@ -13,6 +13,10 @@ div.container-fluid.border.border-secondary
             |  @#{tweet.user.user_name}
       div.row
         == tweet.tweet
+      - if tweet.image.attached?
+        br/
+        div.row
+          = image_tag tweet.image, alt: 'tweet image', class: 'img-fluid img-thumbnail'
       div.row
         div.d-flex.justify-content-between
           div
