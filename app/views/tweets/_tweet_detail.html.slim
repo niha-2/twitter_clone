@@ -24,9 +24,9 @@ div.container-fluid.border.border-secondary
   div.row
     div.d-flex
       div.mx-2
-        span.text-white-50 #{tweet.tweet_created_at_time}
+        span.text-white-50 #{l tweet.created_at, format: :time}
       div
-        span.text-white-50 #{tweet.tweet_created_at_date}
+        span.text-white-50 #{l tweet.created_at, format: :date}
   hr
   div.row
     div.d-flex

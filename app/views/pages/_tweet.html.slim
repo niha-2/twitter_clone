@@ -10,7 +10,7 @@ div.container-fluid.border.border-secondary
         p
           | #{tweet.user.user_profile.name}
           span.text-white-50
-            |  @#{tweet.user.user_name} ・ #{tweet.tweet_created_period_from_now}
+            |  @#{tweet.user.user_name} ・ #{tweet.created_period_from_now}
       div.row.card-body
         = link_to tweet_path(tweet), class: 'text-decoration-none stretched-link link-light' do
           = tweet.tweet
