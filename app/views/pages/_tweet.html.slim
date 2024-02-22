@@ -5,14 +5,15 @@ div.container-fluid.border.border-secondary
         = image_tag tweet.user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
       - else
         = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
-    div.col-11
+    div.col-11.card.text-white.bg-dark
       div.row
         p
           | #{tweet.user.user_profile.name}
           span.text-white-50
-            |  @#{tweet.user.user_name}
-      div.row
-        == tweet.tweet
+            |  @#{tweet.user.user_name} ・ #{tweet.created_period_from_now}
+      div.row.card-body
+        = link_to tweet_path(tweet), class: 'text-decoration-none stretched-link link-light' do
+          = tweet.tweet
       - if tweet.image.attached?
         br/
         div.row

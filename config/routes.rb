@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :tasks
   resources :pages, only: [:index]
   resources :user_profiles, only: %i[show edit update]
-  resources :tweets, only: %i[create]
+  resources :tweets, only: %i[create show]
+  resources :comments, only: %i[create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

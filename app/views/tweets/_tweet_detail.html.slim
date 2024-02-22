@@ -1,0 +1,52 @@
+div.container-fluid.border.border-secondary
+  div.row
+    = render 'header'
+  br/
+  div.row.mb-10
+    div.col-1
+      - if tweet.user.user_profile.icon_image.attached?
+        = image_tag tweet.user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', class: 'rounded'
+      - else
+        = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+    div.col-11.card.text-white.bg-dark
+      div.row
+        p.fs-6.fw-bold
+          | #{tweet.user.user_profile.name}
+        p.fs-6.text-white-50
+          |  @#{tweet.user.user_name}
+  div.row.card.text-white.bg-dark
+    div.card-body
+      p.fs-5= tweet.tweet
+    - if tweet.image.attached?
+      br/
+      div.row
+        = image_tag tweet.image, alt: 'tweet image', class: 'img-fluid img-thumbnail'
+  div.row
+    div.d-flex
+      div.mx-2
+        span.text-white-50 #{l tweet.created_at, format: :time}
+      div
+        span.text-white-50 #{l tweet.created_at, format: :date}
+  hr
+  div.row
+    div.d-flex
+      div.mx-2
+        span #{tweet.retweet_users.length}
+        span.text-white-50  件のリツイート
+      div
+        span #{tweet.like_users.length}
+        span.text-white-50  件のいいね
+  hr
+  div.row
+    div.d-flex.justify-content-evenly
+      div
+        = image_tag 'reply.svg', alt: 'reply', class: 'me-2'
+      div
+        = image_tag 'retweet.svg', alt: 'retweet', class: 'me-2'
+      div
+        = image_tag 'like.svg', alt: 'like', class: 'me-2'
+      div
+        = image_tag 'share.svg', alt: 'share'
+  hr
+  = render 'comment_form'
+  br/
