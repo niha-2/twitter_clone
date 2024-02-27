@@ -27,7 +27,12 @@ div.container-fluid.border.border-secondary
             = image_tag 'retweet.svg', alt: 'retweet', class: 'me-2'
             = tweet.retweet_users.length
           div
-            = image_tag 'like.svg', alt: 'like', class: 'me-2'
+            - if tweet.liked_by?(current_user)
+              = link_to tweet_likes_path(tweet), method: :delete do
+                = image_tag 'like.svg', alt: 'like', class: 'me-2'
+            - else
+              = link_to tweet_likes_path(tweet), method: :post do
+                = image_tag 'like.svg', alt: 'like', class: 'me-2'
             = tweet.like_users.length
           div
             = image_tag 'report.svg', alt: 'report', class: 'me-2'

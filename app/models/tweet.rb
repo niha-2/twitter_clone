@@ -13,4 +13,8 @@ class Tweet < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
 
   validates :tweet, presence: true, length: { maximum: 140 }
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end
