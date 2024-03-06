@@ -1,12 +1,12 @@
-class LikesController < ApplicationController
+# frozen_string_literal: true
 
+class LikesController < ApplicationController
   def create
     return unless user_signed_in?
 
     tweet = Tweet.find(params[:tweet_id])
     like = current_user.likes.new(tweet_id: tweet.id)
     like.save
-    print "like.save"
     redirect_to pages_path
   end
 
