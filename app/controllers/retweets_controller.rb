@@ -1,5 +1,6 @@
-class RetweetsController < ApplicationController
+# frozen_string_literal: true
 
+class RetweetsController < ApplicationController
   def create
     return unless user_signed_in?
 
