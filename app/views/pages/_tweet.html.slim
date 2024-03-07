@@ -12,7 +12,7 @@ div.container-fluid.border.border-secondary
           span.text-white-50
             |  @#{tweet.user.user_name} ・ #{tweet.created_period_from_now}
       div.row.card-body
-        = link_to tweet_path(tweet), class: 'text-decoration-none stretched-link link-light' do
+        = link_to tweet_path(tweet), class: 'text-decoration-none link-light' do
           = tweet.tweet
       - if tweet.image.attached?
         br/
@@ -27,7 +27,12 @@ div.container-fluid.border.border-secondary
             = image_tag 'retweet.svg', alt: 'retweet', class: 'me-2'
             = tweet.retweet_users.length
           div
-            = image_tag 'like.svg', alt: 'like', class: 'me-2'
+            - if tweet.liked_by?(current_user)
+              = link_to tweet_likes_path(tweet), data: { "turbo-method": :delete } do
+                = image_tag 'like.svg', alt: 'like', class: 'me-2'
+            - else
+              = link_to tweet_likes_path(tweet), data: { "turbo-method": :post } do
+                = image_tag 'like.svg', alt: 'like', class: 'me-2'
             = tweet.like_users.length
           div
             = image_tag 'report.svg', alt: 'report', class: 'me-2'
