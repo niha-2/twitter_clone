@@ -6,8 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
 
+  # フォローした、されたの関係
   has_many :active_follow, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy, inverse_of: :follower
   has_many :passive_follow, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy, inverse_of: :followed
+
   has_many :tweets, dependent: :destroy
   has_one :user_profile, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -16,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :followers, through: :passive_follow, source: :follower # 自分をフォローしている人
   has_many :followings, through: :active_follow, source: :followed # 自分がフォローしている人
+
   has_many :like_tweets, through: :likes, source: :tweet
   has_many :retweet_tweets, through: :retweets, source: :tweet
   has_many :comment_tweets, through: :comments, source: :tweet
@@ -47,5 +50,20 @@ class User < ApplicationRecord
 
   def user_create_at_month
     created_at.strftime('%Y年%m月')
+  end
+
+  # フォローする
+  def follow(user_id)
+    active_follow.create(followed_id: user_id)
+  end
+
+  # フォロー解除する
+  def unfollow(user_id)
+    active_follow.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしているか
+  def followings?(user)
+    followings.include?(user)
   end
 end
