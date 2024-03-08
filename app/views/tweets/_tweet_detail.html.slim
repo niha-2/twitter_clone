@@ -19,15 +19,16 @@ div.container-fluid.border.border-secondary
         div.dropdown
           = link_to '#', data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false' } do
             = image_tag 'tweet/menu.svg', alt: 'menu'
-          ul.dropdown-menu
-            - if current_user.followings?(tweet.user)
-              li
-                = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :delete } do
-                  | フォローを解除する
-            - else
-              li
-                = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :post } do
-                  | フォローする
+          - if current_user.id != tweet.user.id
+            ul.dropdown-menu
+              - if current_user.followings?(tweet.user)
+                li
+                  = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :delete } do
+                    | フォローを解除する
+              - else
+                li
+                  = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :post } do
+                    | フォローする
   div.row.card.text-white.bg-dark
     div.card-body
       p.fs-5= tweet.tweet
