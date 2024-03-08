@@ -1,5 +1,6 @@
-class FollowsController < ApplicationController
+# frozen_string_literal: true
 
+class FollowsController < ApplicationController
   def create
     return unless user_signed_in?
 
