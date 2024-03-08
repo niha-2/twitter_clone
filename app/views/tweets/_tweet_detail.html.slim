@@ -23,7 +23,7 @@ div.container-fluid.border.border-secondary
             - if current_user.followings?(tweet.user)
               li
                 = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :delete } do
-                  | フォローする
+                  | フォローを解除する
             - else
               li
                 = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :post } do
