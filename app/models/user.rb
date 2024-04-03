@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :retweets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   has_many :followers, through: :passive_follow, source: :follower # 自分をフォローしている人
   has_many :followings, through: :active_follow, source: :followed # 自分がフォローしている人
@@ -22,6 +23,7 @@ class User < ApplicationRecord
   has_many :like_tweets, through: :likes, source: :tweet
   has_many :retweet_tweets, through: :retweets, source: :tweet
   has_many :comment_tweets, through: :comments, source: :tweet
+  has_many :bookmark_tweets, through: :bookmarks, source: :tweet
 
   validates :user_name, presence: true
   validates :phone_number, presence: true

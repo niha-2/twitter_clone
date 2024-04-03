@@ -43,5 +43,10 @@ div.container-fluid.border.border-secondary
             = image_tag 'report.svg', alt: 'report', class: 'me-2'
             = p 11
           div
-            = image_tag 'share.svg', alt: 'share'
+            - if tweet.bookmarked_by?(current_user)
+              = link_to tweet_bookmarks_path(tweet), data: { "turbo-method": :delete } do
+                = image_tag 'share.svg', alt: 'share'
+            - else
+              = link_to tweet_bookmarks_path(tweet), data: { "turbo-method": :post } do
+                = image_tag 'share.svg', alt: 'share'
           div
