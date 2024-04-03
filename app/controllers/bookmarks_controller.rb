@@ -1,5 +1,6 @@
-class BookmarksController < ApplicationController
+# frozen_string_literal: true
 
+class BookmarksController < ApplicationController
   def create
     return unless user_signed_in?
 
@@ -23,5 +24,4 @@ class BookmarksController < ApplicationController
 
     @current_user_bookmark_tweets = current_user.bookmark_tweets.includes(:user).order(created_at: :desc)
   end
-
 end
