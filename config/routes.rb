@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     delete 'users/sign_out', to: 'users/sessions#destroy'
   end
 
+  resources :users do
+    resource :follows, only: %i[create destroy]
+  end
   resources :tasks
   resources :pages, only: [:index]
   resources :user_profiles, only: %i[show edit update]

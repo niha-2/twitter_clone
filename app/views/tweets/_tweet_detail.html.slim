@@ -8,12 +8,27 @@ div.container-fluid.border.border-secondary
         = image_tag tweet.user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', class: 'rounded'
       - else
         = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
-    div.col-11.card.text-white.bg-dark
+    div.col-10.card.text-white.bg-dark
       div.row
         p.fs-6.fw-bold
           | #{tweet.user.user_profile.name}
         p.fs-6.text-white-50
           |  @#{tweet.user.user_name}
+    div.col-1
+      div.row
+        div.dropdown
+          = link_to '#', data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false' } do
+            = image_tag 'tweet/menu.svg', alt: 'menu'
+          - if current_user.id != tweet.user.id
+            ul.dropdown-menu
+              - if current_user.followings?(tweet.user)
+                li
+                  = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :delete } do
+                    | フォローを解除する
+              - else
+                li
+                  = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :post } do
+                    | フォローする
   div.row.card.text-white.bg-dark
     div.card-body
       p.fs-5= tweet.tweet
