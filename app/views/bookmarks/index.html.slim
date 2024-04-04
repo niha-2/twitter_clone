@@ -1,0 +1,9 @@
+div.container-fluid.text-white
+  div.row
+    div.col-4.border.border-secondary
+      = render 'pages/side_bar'
+    div.col-8.border.border-secondary
+      div.row
+        = render 'header'
+      div.row
+        = render 'bookmarks', tweets: @current_user_bookmark_tweets

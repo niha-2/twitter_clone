@@ -7,6 +7,7 @@ class Tweet < ApplicationRecord
   has_many :retweets, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   has_many :comment_users, through: :comments, source: :user
   has_many :retweet_users, through: :retweets, source: :user
@@ -20,5 +21,9 @@ class Tweet < ApplicationRecord
 
   def retweeted_by?(user)
     retweets.exists?(user_id: user.id)
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 end
