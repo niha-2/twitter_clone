@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Message < ApplicationRecord
   include FormatDateTime
   belongs_to :sender, class_name: 'User'
