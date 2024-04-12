@@ -1,0 +1,34 @@
+- if message.sender_id != current_user.id
+  div.container-fluid.border.border-secondary
+    div.row
+      div.col-1
+        - if message.sender.user_profile.icon_image.attached?
+          = image_tag message.sender.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+        - else
+          = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      div.col-11.card.text-white.bg-dark
+        div.row
+          p
+            | #{message.sender.user_profile.name}
+            span.text-white-50
+              |  @#{message.sender.user_name} ・ #{message.created_period_from_now}
+        div.row.card-body
+          = link_to user_messages_path(message.sender), data: { turbo_method: :get }, class: 'text-decoration-none link-light' do
+            = message.message
+- else
+  div.container-fluid.border.border-secondary
+    div.row
+      div.col-1
+        - if message.receiver.user_profile.icon_image.attached?
+          = image_tag message.receiver.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+        - else
+          = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      div.col-11.card.text-white.bg-dark
+        div.row
+          p
+            | #{message.receiver.user_profile.name}
+            span.text-white-50
+              |  @#{message.receiver.user_name} ・ #{message.created_period_from_now}
+        div.row.card-body
+          = link_to user_messages_path(message.receiver), data: { turbo_method: :get }, class: 'text-decoration-none link-light' do
+            = message.message

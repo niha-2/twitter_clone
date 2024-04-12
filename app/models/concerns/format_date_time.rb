@@ -20,4 +20,12 @@ module FormatDateTime
       I18n.l(created_at, format: :date)
     end
   end
+
+  def created_datetime
+    if created_hour_from_now < 24
+      I18n.l(created_at, format: :time)
+    else
+      I18n.l(created_at, format: :datetime)
+    end
+  end
 end
