@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_144750) do
   create_table "messages", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
-    t.string "message"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

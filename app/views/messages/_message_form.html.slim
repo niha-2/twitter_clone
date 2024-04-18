@@ -1,7 +1,7 @@
 div.row
   = form_with(url: user_messages_path(@receiver), model: @message, data: { turbo: false }, method: :post) do |f|
     .field
-    = f.text_area :message, class: 'form-control bg-dark text-light'
+    = f.text_area :content, class: 'form-control bg-dark text-light'
     .d-flex.justify-content-end
       .actions.text-right.mb-1
         = image_submit_tag('message/message_submit.svg')

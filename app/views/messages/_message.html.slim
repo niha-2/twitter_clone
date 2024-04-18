@@ -14,7 +14,7 @@
               |  @#{message.sender.user_name} ・ #{message.created_period_from_now}
         div.row.card-body
           = link_to user_messages_path(message.sender), data: { turbo_method: :get }, class: 'text-decoration-none link-light' do
-            = message.message
+            = message.content
 - else
   div.container-fluid.border.border-secondary
     div.row
@@ -31,4 +31,4 @@
               |  @#{message.receiver.user_name} ・ #{message.created_period_from_now}
         div.row.card-body
           = link_to user_messages_path(message.receiver), data: { turbo_method: :get }, class: 'text-decoration-none link-light' do
-            = message.message
+            = message.content

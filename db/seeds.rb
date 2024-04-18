@@ -224,48 +224,48 @@ comment5.save!
 message1 = Message.new(
   sender_id: 1,
   receiver_id: 2,
-  message: 'こんにちは'
+  content: 'こんにちは'
 )
 message1.save!
 
 message2 = Message.new(
   sender_id: 2,
   receiver_id: 3,
-  message: 'こんばんは'
+  content: 'こんばんは'
 )
 message2.save!
 
 message3 = Message.new(
   sender_id: 3,
   receiver_id: 4,
-  message: 'おはよう'
+  content: 'おはよう'
 )
 message3.save!
 
 message4 = Message.new(
   sender_id: 4,
   receiver_id: 1,
-  message: 'おやすみ'
+  content: 'おやすみ'
 )
 message4.save!
 
 message5 = Message.new(
   sender_id: 3,
   receiver_id: 1,
-  message: 'おはよう'
+  content: 'おはよう'
 )
 message5.save!
 
 message6 = Message.new(
   sender_id: 3,
   receiver_id: 2,
-  message: 'おはよう'
+  content: 'おはよう'
 )
 message6.save!
 
 message7 = Message.new(
   sender_id: 3,
   receiver_id: 4,
-  message: '今日あつい'
+  content: '今日あつい'
 )
 message7.save!
