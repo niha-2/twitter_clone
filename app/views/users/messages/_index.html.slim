@@ -1,7 +1,7 @@
   .container
     .row
       div
-        = render 'header'
+        = render 'users/messages/header'
     - if @messages.present?
       .row
         .col-md-12
@@ -23,4 +23,4 @@
                 .col-md-2.text-right
                   small.text-white-50= message.created_datetime
     .row.mt-3
-      = render 'message_form'
+      = render 'users/messages/message_form'

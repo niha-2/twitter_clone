@@ -80,8 +80,13 @@ class User < ApplicationRecord
   end
 
   # ログインユーザーのメッセージをすべて取得
-  def current_user_messages
+  def all_messages
     Message.where(receiver_id: id).or(Message.where(sender_id: id))
+  end
+
+  # ログインユーザーの各ユーザーごとの最新のメッセージIDを取得
+  def latest_messages_ids
+    all_messages.group('LEAST(sender_id, receiver_id)', 'GREATEST(sender_id, receiver_id)').pluck('MAX(id)')
   end
 
   def message_with?(user)

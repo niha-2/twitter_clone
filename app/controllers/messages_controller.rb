@@ -1,58 +1,42 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
-  before_action :set_latest_messages, only: %i[index show]
-  before_action :set_receiver, only: %i[show create]
+  before_action :set_latest_messages, only: %i[index]
+  after_action :latest_receiver_messages, only: %i[index]
 
   # 送信者ごとに最新のメッセージを取得
   def index
-          p @latest_messages
+  end
+
+  private
+
+  def set_latest_messages
+    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    latest_messages_ids = current_user.latest_messages_ids
+    @latest_messages = Message.where(id: latest_messages_ids).includes(sender: [:user_profile],
+                                                               receiver: [:user_profile]).order(created_at: :desc)
+    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+  end
+
+  def current_user_messages_with(receiver)
+    @messages = current_user.messages_with(receiver).order(created_at: :asc)
+  end
+
+  # やり取りしたユーザーの中で最もやり取りが新しい人とのメッセージを取得
+  def latest_receiver_messages
+    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    p @latest_messages
     if @latest_messages.present?
       @receiver = if @latest_messages.first.receiver_id == current_user.id
                     @latest_messages.first.sender
                   else
                     @latest_messages.first.receiver
                   end
-
-      current_user_messages_with(@receiver)
       p @receiver
+      p '????????????????????????????'
+      current_user_messages_with(@receiver)
     end
-    p @receiver
-    p "!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  end
-
-  # 特定のユーザーとのメッセージを表示
-  def show
-    return unless current_user.message_with?(@receiver)
-
-    current_user_messages_with(@receiver)
-  end
-
-  # メッセージを送信
-  def create
-    @message = Message.new(sender_id: current_user.id, receiver_id: @receiver.id, content: params[:content])
-    if @message.save
-      redirect_back(fallback_location: user_messages_path(@receiver))
-    else
-      redirect_back(fallback_location: user_messages_path(@receiver), alert: 'メッセージの送信に失敗しました')
-    end
-  end
-
-  private
-
-  def set_latest_messages
-    message_ids = current_user.current_user_messages.group('LEAST(sender_id, receiver_id)',
-                                                           'GREATEST(sender_id, receiver_id)').pluck('MAX(id)')
-                                                           p message_ids
-    @latest_messages = Message.where(id: message_ids).includes(sender: [:user_profile],
-                                                               receiver: [:user_profile]).order(created_at: :desc)
-  end
-
-  def set_receiver
-    @receiver = User.find(params[:user_id])
-  end
-
-  def current_user_messages_with(receiver)
-    @messages = current_user.messages_with(receiver).order(created_at: :asc)
+    p '\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+    p @messages
   end
 end
