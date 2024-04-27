@@ -76,7 +76,7 @@ class User < ApplicationRecord
 
   # 特定のユーザーに送受信したメッセージを取得
   def messages_with(user)
-    Message.where(sender_id:  id, receiver_id: user.id).or(Message.where(sender_id: user.id, receiver_id: id))
+    Message.where(sender_id: id, receiver_id: user.id).or(Message.where(sender_id: user.id, receiver_id: id))
   end
 
   # ログインユーザーのメッセージをすべて取得

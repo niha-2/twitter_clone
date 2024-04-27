@@ -27,7 +27,7 @@ module Users
     def set_latest_messages
       latest_messages_ids = current_user.latest_messages_ids
       @latest_messages = Message.where(id: latest_messages_ids).includes(sender: [:user_profile],
-                                                                 receiver: [:user_profile]).order(created_at: :desc)
+                                                                         receiver: [:user_profile]).order(created_at: :desc)
     end
 
     def set_receiver

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :follows, only: %i[create destroy]
-    resources :messages, only: %i[create index], controller: "users/messages"
+    resources :messages, only: %i[create index], controller: 'users/messages'
   end
   resources :tasks
   resources :pages, only: [:index]
