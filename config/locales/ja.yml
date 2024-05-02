@@ -151,3 +151,4 @@ ja:
     formats:
       time: "%H:%M"
       date: "%Y年%m月%d日"
+      datetime: "%Y/%m/%d %H:%M"

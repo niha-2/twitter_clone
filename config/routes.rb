@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :follows, only: %i[create destroy]
+    resources :messages, only: %i[create index], controller: 'users/messages'
   end
   resources :tasks
   resources :pages, only: [:index]
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   end
   resources :comments, only: %i[create]
   resources :bookmarks, only: %i[index]
+  resources :messages, only: %i[index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

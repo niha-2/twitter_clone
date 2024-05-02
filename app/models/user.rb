@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :active_follow, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy, inverse_of: :follower
   has_many :passive_follow, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy, inverse_of: :followed
 
+  # メッセージを送った、受け取ったの関係
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy, inverse_of: :sender
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id', dependent: :destroy,
+                               inverse_of: :receiver
+
   has_many :tweets, dependent: :destroy
   has_one :user_profile, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -67,5 +72,24 @@ class User < ApplicationRecord
   # フォローしているか
   def followings?(user)
     followings.include?(user)
+  end
+
+  # 特定のユーザーに送受信したメッセージを取得
+  def messages_with(user)
+    Message.where(sender_id: id, receiver_id: user.id).or(Message.where(sender_id: user.id, receiver_id: id))
+  end
+
+  # ログインユーザーのメッセージをすべて取得
+  def all_messages
+    Message.where(receiver_id: id).or(Message.where(sender_id: id))
+  end
+
+  # ログインユーザーの各ユーザーごとの最新のメッセージIDを取得
+  def latest_messages_ids
+    all_messages.group('LEAST(sender_id, receiver_id)', 'GREATEST(sender_id, receiver_id)').pluck('MAX(id)')
+  end
+
+  def message_with?(user)
+    messages_with(user).present?
   end
 end

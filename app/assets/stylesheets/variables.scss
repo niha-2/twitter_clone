@@ -3,3 +3,17 @@ $prefix: "top-page-";
 $nav-underline-link-active-color: var(--#{$prefix}emphasis-color);
 $form-label-color: white;
 $headings-color: white;
+
+.message-box-left {
+  background-color: #696969;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.message-box-right {
+  background-color: #1e90ff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}

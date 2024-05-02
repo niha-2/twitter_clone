@@ -1,0 +1,9 @@
+div.row.d-flex.justify-content-center.mt-3
+  div.text-center
+    - if @receiver.user_profile.icon_image.attached?
+      = image_tag @receiver.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+    - else
+      = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+div.row.text-center
+  p.text-white-50
+    |  @#{@receiver.user_name}

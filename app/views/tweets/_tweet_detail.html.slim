@@ -21,6 +21,9 @@ div.container-fluid.border.border-secondary
             = image_tag 'tweet/menu.svg', alt: 'menu'
           - if current_user.id != tweet.user.id
             ul.dropdown-menu
+              li
+                = link_to user_messages_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :get } do
+                  | メッセージを送る
               - if current_user.followings?(tweet.user)
                 li
                   = link_to user_follows_path(tweet.user), class: 'dropdown-item', data: { turbo_method: :delete } do

@@ -219,3 +219,53 @@ comment5 = Comment.new(
   comment: '俺も!！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
 )
 comment5.save!
+
+# message
+message1 = Message.new(
+  sender_id: 1,
+  receiver_id: 2,
+  content: 'こんにちは'
+)
+message1.save!
+
+message2 = Message.new(
+  sender_id: 2,
+  receiver_id: 3,
+  content: 'こんばんは'
+)
+message2.save!
+
+message3 = Message.new(
+  sender_id: 3,
+  receiver_id: 4,
+  content: 'おはよう'
+)
+message3.save!
+
+message4 = Message.new(
+  sender_id: 4,
+  receiver_id: 1,
+  content: 'おやすみ'
+)
+message4.save!
+
+message5 = Message.new(
+  sender_id: 3,
+  receiver_id: 1,
+  content: 'おはよう'
+)
+message5.save!
+
+message6 = Message.new(
+  sender_id: 3,
+  receiver_id: 2,
+  content: 'おはよう'
+)
+message6.save!
+
+message7 = Message.new(
+  sender_id: 3,
+  receiver_id: 4,
+  content: '今日あつい'
+)
+message7.save!
