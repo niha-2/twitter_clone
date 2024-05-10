@@ -269,3 +269,34 @@ message7 = Message.new(
   content: '今日あつい'
 )
 message7.save!
+
+# notice
+notice1 = Notice.new(
+  user_id: 4,
+  tweet_id: 1,
+  action_type: 'like'
+)
+notice1.save!
+
+(1..3).each do |num|
+  notice = Notice.new(
+    user_id: num,
+    tweet_id: num + 1,
+    action_type: 'retweet'
+  )
+  notice.save!
+end
+
+notice5 = Notice.new(
+  user_id: 1,
+  tweet_id: 2,
+  action_type: 'comment'
+)
+notice5.save!
+
+notice6 = Notice.new(
+  user_id: 2,
+  tweet_id: 3,
+  action_type: 'comment'
+)
+notice6.save!

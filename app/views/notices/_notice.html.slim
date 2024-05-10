@@ -1,0 +1,14 @@
+div.container-fluid.border.border-secondary
+  div.row
+    div.col-1
+      - if notice.user.user_profile.icon_image.attached?
+        = image_tag notice.user.user_profile.icon_image, alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+      - else
+        = image_tag 'profile/no_image.png', alt: 'profile', width: '60px', height: '60px', style: 'border-radius: 50%;'
+  div.row
+  - if notice.action_type == 'like'
+    p #{notice.user.user_profile.name}さんが投稿にいいね♡しました！
+  - elsif notice.action_type == 'retweet'
+    p #{notice.user.user_profile.name}さんが投稿をリツイートしました！
+  - else
+    p #{notice.user.user_profile.name}さんが投稿にコメントしました！

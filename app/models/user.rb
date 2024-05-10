@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :retweets, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :notices, dependent: :destroy
 
   has_many :followers, through: :passive_follow, source: :follower # 自分をフォローしている人
   has_many :followings, through: :active_follow, source: :followed # 自分がフォローしている人

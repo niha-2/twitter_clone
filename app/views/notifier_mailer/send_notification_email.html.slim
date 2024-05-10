@@ -1,0 +1,7 @@
+p #{@notice.tweet.user.email}さん! Xをご利用いただきありがとうございます。
+- if @notice.action_type == 'like'
+  p #{@notice.user.user_name}さんが投稿にいいね♡しました！
+- elsif @notice.action_type == 'retweet'
+  p #{@notice.user.user_name}さんが投稿をリツイートしました！
+- else
+  p #{@notice.user.user_name}さんが投稿にコメントしました！

@@ -7,6 +7,11 @@ class LikesController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     like = current_user.likes.new(tweet_id: tweet.id)
     like.save
+
+    notice = Notice.new(user_id: current_user.id, tweet_id: tweet.id, action_type: 'like')
+    notice.save
+    NotifierMailer.send_notification_email(notice)
+
     redirect_back(fallback_location: root_path)
   end
 
