@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
     notice = Notice.new(user_id: current_user.id, tweet_id: @comment.tweet.id, action_type: 'comment')
     notice.save
-    NotifierMailer.send_notification_email(notice)
+    NotifierMailer.send_notification_email(notice).deliver_now
     redirect_to tweet_path(@comment.tweet)
   end
 
