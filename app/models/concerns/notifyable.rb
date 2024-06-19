@@ -3,7 +3,7 @@
 module Notifyable
   extend ActiveSupport::Concern
 
-  include do
+  included do
     after_create :create_and_send_notification
   end
 
