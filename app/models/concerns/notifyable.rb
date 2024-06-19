@@ -10,7 +10,7 @@ module Notifyable
   private
 
   def create_and_send_notification
-    notice = Notice.new(user_id: current_user.id, tweet_id:, action_type:)
+    notice = Notice.new(user_id: self.current_user.id, tweet_id:, action_type:)
     return unless notice.save
 
     NotifierMailer.send_notification_email(notice).deliver_now
