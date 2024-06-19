@@ -8,9 +8,6 @@ class RetweetsController < ApplicationController
     retweet = current_user.retweets.new(tweet_id: tweet.id)
     retweet.save
 
-    notice = Notice.new(user_id: current_user.id, tweet_id: tweet.id, action_type: 'retweet')
-    notice.save
-    NotifierMailer.send_notification_email(notice).deliver_now
     redirect_back(fallback_location: root_path)
   end
 
