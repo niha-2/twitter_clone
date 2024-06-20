@@ -21,9 +21,9 @@ module Notifyable
     when 'Comment'
       tweet.id
     when 'Retweet'
-      tweet_id
+      self[:tweet_id]
     when 'Like'
-      tweet_id
+      self[:tweet_id]
     end
   end
 
