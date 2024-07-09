@@ -7,6 +7,7 @@ class RetweetsController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     retweet = current_user.retweets.new(tweet_id: tweet.id)
     retweet.save
+
     redirect_back(fallback_location: root_path)
   end
 

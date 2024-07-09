@@ -7,6 +7,7 @@ class LikesController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     like = current_user.likes.new(tweet_id: tweet.id)
     like.save
+
     redirect_back(fallback_location: root_path)
   end
 

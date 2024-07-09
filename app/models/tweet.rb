@@ -8,6 +8,7 @@ class Tweet < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :notices, dependent: :destroy
 
   has_many :comment_users, through: :comments, source: :user
   has_many :retweet_users, through: :retweets, source: :user

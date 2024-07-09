@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create]
   resources :bookmarks, only: %i[index]
   resources :messages, only: %i[index]
+  resources :notices, only: %i[index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

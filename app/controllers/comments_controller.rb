@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     flash[:alert] = @comment.errors.full_messages.join(', ') unless @comment.save
+
     redirect_to tweet_path(@comment.tweet)
   end
 
